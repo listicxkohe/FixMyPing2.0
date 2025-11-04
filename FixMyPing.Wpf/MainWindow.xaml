@@ -1,0 +1,34 @@
+<Window x:Class="FixMyPing.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FixMyPing - DNS Helper" Height="320" Width="520">
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Choose DNS preset:" FontWeight="Bold" />
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,8,0,8">
+            <ComboBox x:Name="DnsPresetCombo" Width="220" SelectedIndex="0">
+                <ComboBoxItem Tag="8.8.8.8,8.8.4.4">Google (8.8.8.8 / 8.8.4.4)</ComboBoxItem>
+                <ComboBoxItem Tag="1.1.1.1,1.0.0.1">Cloudflare (1.1.1.1 / 1.0.0.1)</ComboBoxItem>
+                <ComboBoxItem Tag="9.9.9.9,149.112.112.112">Quad9 (9.9.9.9)</ComboBoxItem>
+                <ComboBoxItem Tag="208.67.222.222,208.67.220.220">OpenDNS (208.67.222.222 / 208.67.220.220)</ComboBoxItem>
+                <ComboBoxItem Tag="custom">Custom...</ComboBoxItem>
+            </ComboBox>
+            <TextBox x:Name="CustomDnsText" Width="220" Margin="8,0,0,0" IsEnabled="False" />
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0,8,0,8">
+            <Button x:Name="ApplyDnsButton" Width="140" Click="ApplyDnsButton_Click">Apply DNS</Button>
+            <Button x:Name="RefreshDnsButton" Width="140" Margin="8,0,0,0" Click="RefreshDnsButton_Click">Refresh DNS</Button>
+            <Button x:Name="AutoFixButton" Width="140" Margin="8,0,0,0" Click="AutoFixButton_Click">Apply & Refresh</Button>
+        </StackPanel>
+
+        <TextBox x:Name="OutputBox" Grid.Row="3" Margin="0,8,0,0" IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+    </Grid>
+</Window>
